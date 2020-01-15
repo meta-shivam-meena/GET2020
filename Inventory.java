@@ -33,6 +33,15 @@ public class Inventory {
     }
     
     /**
+     * It tells whether item with given id is present in inventory or not.
+     * @param id
+     * @return
+     */
+    public static boolean containsItem(int id) {
+        return itemIdAndObject.containsKey(id);
+    }
+    
+    /**
      * It is used to get Item object for given id.
      * @param id
      * @return

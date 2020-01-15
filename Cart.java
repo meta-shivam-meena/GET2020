@@ -59,7 +59,11 @@ public class Cart {
      * @param quantity
      */
     public void updateCart(int id, int quantity) {
-        cart.put(id, quantity);
+        if (Inventory.containsItem(id)) {
+            cart.put(id, quantity);
+        } else {
+            System.out.println("Item not available.\n");
+        }
     }
 
     /**
