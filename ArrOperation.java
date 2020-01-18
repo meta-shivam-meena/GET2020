@@ -4,7 +4,7 @@ package scf.session4;
  * ArrOperation class contains some methods related to logical operation
  * on array with positive integers.
  * @author Shivam Kumar Meena
- * created on 17th January, 2020
+ * created on 16th January, 2020
  */
 public class ArrOperation {
     
@@ -26,6 +26,9 @@ public class ArrOperation {
             throw new AssertionError();
         }
         
+        // using dynamic programming similar to lcs algorithm
+        // to store length of common subarrays between numbers
+        // and reverse of number.
         matrix = new int[numbers.length + 1][numbers.length + 1];
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[i].length; j++) {
@@ -35,6 +38,7 @@ public class ArrOperation {
             }
         }
         
+        // finding maximum length of max mirror in matrix array.
         maxMirrorLength = 0;
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[i].length; j++) {
@@ -57,6 +61,8 @@ public class ArrOperation {
      */
     public static int countClumps(int[] numbers) throws AssertionError {
         
+        // clumpFound is false if we are looking for start of a clump
+        // and is set true once a clump starts.
         boolean clumpFound;
         int totalClumps;
         
@@ -67,12 +73,12 @@ public class ArrOperation {
         clumpFound = false;
         totalClumps = 0;
         for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] == numbers[i - 1]) {
-                if (!clumpFound) {
+            if (numbers[i] == numbers[i - 1]) { // in the clump
+                if (!clumpFound) { // start of a clump
                     clumpFound = true;
                     totalClumps++;
                 }
-            } else {
+            } else { // to set end of a clump
                 clumpFound = false;
             }
         }
@@ -99,9 +105,13 @@ public class ArrOperation {
                                     throws AssertionError {
         
         int length;
+        // isMoved[i] denotes if numbers[i] has been moved to result
+        // array or not. true if moved, else false.
         boolean[] isMoved; 
         int[] result;
+        // for iterating on numbers array.
         int indexNumbers;
+        // for iterating on result array.
         int indexResult;
         
         if (!isValidInputForFixXY(numbers, x, y)) {
@@ -111,6 +121,8 @@ public class ArrOperation {
         length = numbers.length;
         isMoved = new boolean[length];
         result = new int[length];
+        
+        // copying all x from numbers to result array at same index.
         for (int i = 0; i < length; i++) {
             if (numbers[i] == x) {
                 result[i] = x;
@@ -118,16 +130,17 @@ public class ArrOperation {
             }
         }
         
+        // moving all y after x in result array from numbers array.
         indexNumbers = 0;
         indexResult = 0;
-        outer: while (indexResult < length - 1) {
-            if (result[indexResult] == x && result[indexResult + 1] != x) {
+        while (indexResult < length - 1) {
+            
+            if (result[indexResult] == x) {
+                
                 while (indexNumbers < length && numbers[indexNumbers] != y) {
                     indexNumbers++;
                 }
-                if (indexNumbers == length) {
-                    break outer;
-                }
+                
                 result[indexResult + 1] = y;
                 isMoved[indexNumbers] = true;
                 indexNumbers++;
@@ -135,17 +148,21 @@ public class ArrOperation {
             indexResult++;
         }
         
+        // moving remaining elements from numbers to result array.
         indexNumbers = 0;
         indexResult = 0;
         while (indexResult < length) {
+            
             if (result[indexResult] == x || result[indexResult] == y) {
                 indexResult++;
                 continue;
             }
+            
             if (isMoved[indexNumbers]) {
                 indexNumbers++;
                 continue;
             }
+            
             result[indexResult] = numbers[indexNumbers];
             indexResult++;
             indexNumbers++;
@@ -164,9 +181,6 @@ public class ArrOperation {
      * @throws AssertionError if numbers array is empty.
      */
     public static int splitArray(int[] numbers) throws AssertionError {
-        //int[] sumBeforeThisIndex = new int[numbers.length + 1];   
-        //int runningSum = 0;
-        //sumBeforeThisIndex[0] = 0;
         
         int arraySum;
         int index;
@@ -181,10 +195,14 @@ public class ArrOperation {
             arraySum += numbers[i];
         }
         
+        // if sum is odd, then there is no index, where left subarray
+        // and half subarray have equal sum.
         if (arraySum % 2 != 0) {
             return -1;
         }
         
+        // finding index where, sum of left array is equal to half of
+        // sum of array elements.
         index = 0;
         runningSum = 0;
         while (runningSum != (arraySum / 2)) {
@@ -193,21 +211,12 @@ public class ArrOperation {
         }
         
         return index;
-        /*for (int i = 1; i < sumBeforeThisIndex.length; i++) {
-            runningSum += numbers[i - 1];
-            sumBeforeThisIndex[i] = runningSum;
-        }
-        
-        for (int i = 0; i < sumBeforeThisIndex.length; i++) {
-            int sumAfterThisIndex = sumBeforeThisIndex[numbers.length]
-                                    - sumBeforeThisIndex[i];
-            boolean condition = sumBeforeThisIndex[i] == sumAfterThisIndex;
-            if (condition) {
-                return i;
-            }
-        }*/
     }
     
+    /*
+     * Checks valid of input for fixXY method as specified in description
+     * of fixXY method.
+     */
     private static boolean isValidInputForFixXY(int[] numbers, int x, int y) {
         if (numbers.length == 0 || numbers[numbers.length - 1] == x) {
             return false;
@@ -240,6 +249,7 @@ public class ArrOperation {
         return true;
     }
     
+    // test method for above methods.
     public static void main(String[] args) {
         
         System.out.println();
