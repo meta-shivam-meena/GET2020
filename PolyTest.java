@@ -30,28 +30,33 @@ public class PolyTest {
             return Arrays.asList(new Object[][]{
                                             {
                                                 new Poly(new int[][]{
-                                                                                {2, 2}, {3, 0}
+                                                        {2, 2}, 
+                                                        {3, 0}
                                                 }),
                                                 1,
                                                 5
                                             },
                                             {
                                                 new Poly(new int[][]{
-                                                                                {2, 2}, {3, 2}
+                                                        {2, 2},
+                                                        {3, 2}
                                                 }),
                                                 2,
-                                                160
+                                                20
                                             },
                                             {
                                                 new Poly(new int[][]{
-                                                                                {3, 0}, {5, 1}, {1, 3}
+                                                        {3, 0}, 
+                                                        {5, 1}, 
+                                                        {1, 3}
                                                 }),
                                                 5.5f,
                                                 196.875
                                             },
                                             {
                                                 new Poly(new int[][]{
-                                                                                {0, 1}, {2, 2}
+                                                        {0, 1}, 
+                                                        {2, 2}
                                                 }),
                                                 3,
                                                 18
@@ -70,9 +75,9 @@ public class PolyTest {
         public void testEvaluate() {
             double actualOutput = poly.evaluate(x);
             double difference = actualOutput - expectedOutput;
-            boolean isDifferenceSmallEnough = Math.abs(difference)
+            boolean isDifferenceVerySmall = Math.abs(difference)
                                             <= maxDifferenceForTwoDoublesToBeEqual;
-            assert(isDifferenceSmallEnough);
+            assertTrue(isDifferenceVerySmall);
         }
     }
     
@@ -86,7 +91,8 @@ public class PolyTest {
             return Arrays.asList(new Object[][]{
                                             {
                                                 new Poly(new int[][]{
-                                                                                {1, 2}, {2, 2}
+                                                        {1, 2},
+                                                        {2, 2}
                                                 }),
                                                 2
                                             },
@@ -98,7 +104,8 @@ public class PolyTest {
                                             },
                                             {
                                                 new Poly(new int[][]{
-                                                                                {1, 3}, {2, 5}
+                                                        {1, 3},
+                                                        {2, 5}
                                                 }),
                                                 5
                                             }
@@ -117,7 +124,6 @@ public class PolyTest {
         }
     }
     
-    /*
     @RunWith(Parameterized.class)
     public static class ParameterizedTestsForAddPoly {
         Poly poly1;
@@ -130,25 +136,34 @@ public class PolyTest {
         public static Collection<Object[]> input() {
             return Arrays.asList(new Object[][]{
                                             {
-                                                new Poly(new int[][]{
-                                                                                {1, 3}, {2, 2}
+                                                new Poly(new int[][] {
+                                                        {1, 3},
+                                                        {2, 2}
                                                 }),
                                                 new Poly(new int[][]{
-                                                                                {2, 3}, {1, 1}
+                                                        {2, 3},
+                                                        {1, 1}
                                                 }),
                                                 new Poly(new int[][]{
-                                                                                {3, 3}, {1, 1}, {2, 2}
+                                                        {2, 2},
+                                                        {1, 1},
+                                                        {3, 3}
                                                 })
                                             },
                                             {
                                                 new Poly(new int[][]{
-                                                                                {3, 0}, {1, 1}
+                                                        {3, 0},
+                                                        {1, 1}
                                                 }),
                                                 new Poly(new int[][]{
-                                                                                {8, 3}, {2, 2}
+                                                        {8, 3},
+                                                        {2, 2}
                                                 }),
                                                 new Poly(new int[][]{
-                                                                                {3, 0}, {1, 1}, {8, 3}, {2, 2}
+                                                        {3, 0},
+                                                        {1, 1},
+                                                        {8, 3},
+                                                        {2, 2}
                                                 })
                                             }
             });
@@ -163,7 +178,138 @@ public class PolyTest {
         
         @Test
         public void testAddPoly() {
-            
+            Poly actualPoly = poly1.addPoly(poly1, poly2);
+            boolean areEqual = expectedPoly.equals(actualPoly);
+            assertTrue(areEqual);
         }
-    }*/
+    }
+    
+    @RunWith(Parameterized.class)
+    public static class ParameterizedTestsForMultiplyPoly {
+        Poly poly1;
+        Poly poly2;
+        Poly expectedOutput;
+        
+        @Parameterized.Parameters
+        public static Collection<Object[]> input() {
+            return Arrays.asList(new Object[][] {
+                                            {
+                                                new Poly(new int[][] {
+                                                        {1, 0},
+                                                        {2, 1},
+                                                        {3, 2},
+                                                }),
+                                                new Poly(new int[][] {
+                                                        {2, 1},
+                                                        {4, 4}
+                                                }),
+                                                new Poly(new int[][] {
+                                                         {2, 1},
+                                                         {4, 2},
+                                                         {6, 3},
+                                                         {4, 4},
+                                                         {8, 5},
+                                                         {12, 6}
+                                                }),
+                                            },
+                                            {
+                                                new Poly(new int[][] {
+                                                        {1, 0},
+                                                        {1, 1}
+                                                }),
+                                                new Poly(new int[][] {
+                                                        {2, 1},
+                                                        {1, 2}
+                                                }),
+                                                new Poly(new int[][] {
+                                                         {2, 1},
+                                                         {3, 2},
+                                                         {1, 3}
+                                                })
+                                            }
+            });
+        }
+        
+        public ParameterizedTestsForMultiplyPoly(Poly poly1, Poly poly2,
+                                        Poly expectedOutput) {
+            this.poly1 = poly1;
+            this.poly2 = poly2;
+            this.expectedOutput = expectedOutput;
+        }
+        
+        @Test
+        public void testMultiplyPoly() {
+            Poly actualOutput = poly1.multiplyPoly(poly1, poly2);
+            boolean areEqual = expectedOutput.equals(actualOutput);
+            assertTrue(areEqual);
+        }
+    }
+    
+    @RunWith(Parameterized.class)
+    public static class ParameterizedTestsForEquals {
+        Poly poly1;
+        Poly poly2;
+        boolean expectedOutput;
+        
+        @Parameterized.Parameters
+        public static Collection<Object[]> input() {
+            return Arrays.asList(new Object[][] {
+                                            {
+                                                new Poly(new int[][] {
+                                                        {1, 2},
+                                                        {2, 0},
+                                                        {3, 2},
+                                                        {4, 3}
+                                                }),
+                                                new Poly(new int[][] {
+                                                        {2, 0},
+                                                        {4, 2},
+                                                        {4, 3}
+                                                }),
+                                                true
+                                            },
+                                            {
+                                                new Poly(new int[][] {
+                                                        {1, 2},
+                                                        {2, 0},
+                                                        {3, 2},
+                                                        {4, 3}
+                                                }),
+                                                new Poly(new int[][] {
+                                                        {2, 0},
+                                                        {4, 2},
+                                                        {0, 2},
+                                                        {4, 3}
+                                                }),
+                                                true
+                                            },
+                                            {
+                                                new Poly(new int[][] {
+                                                        {2, 0},
+                                                        {5, 2},
+                                                        {4, 3}
+                                                }),
+                                                new Poly(new int[][] {
+                                                        {2, 0},
+                                                        {4, 2},
+                                                        {4, 3}
+                                                }),
+                                                false
+                                            }
+            });
+        }
+        
+        public ParameterizedTestsForEquals(Poly poly1, Poly poly2,
+                                        boolean expectedOutput) {
+            this.poly1 = poly1;
+            this.poly2 = poly2;
+            this.expectedOutput = expectedOutput;
+        }
+        
+        @Test
+        public void testEquals() {
+            boolean actualOutput = poly1.equals(poly2);
+            assertEquals(expectedOutput, actualOutput);
+        }
+    }
 }

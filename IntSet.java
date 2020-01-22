@@ -8,8 +8,11 @@ import java.util.Arrays;
  * @author Shivam Kumar Meena
  * created on 21st January, 2020
  */
-public class IntSet {
-    private int[] set;
+public final class IntSet {
+    /**
+     * array to store set elements in sorted manner and without duplicates.
+     */
+    private final int[] set;
     
     /**
      * Constructor which initializes the set with input array elements.
@@ -104,9 +107,12 @@ public class IntSet {
         return new IntSet(result);
     }
     
-    /*
-     * This is a helper method for the constructor to properly initialize
-     * the set.
+    /**
+     * It is a helper method for constructor and does what the name says.
+     * @param integers copy of input to the constructor
+     * @return what name says
+     * @throws AssertionError when input is invalid, i.e. any element of
+     * array is less than 1 or greater than 1000.
      */
     private int[] getSortedArrayWithoutDuplicates(int[] integers) 
                                     throws AssertionError {
@@ -120,7 +126,9 @@ public class IntSet {
         
         Arrays.sort(integers);
         
-        
+        if (integers[0] < 1 || integers[0] > 1000) {
+            throw new AssertionError();
+        }        
         size = 1;
         for (int i = 1; i < integers.length; i++) {
             if (integers[i] < 1 || integers[i] > 1000) {

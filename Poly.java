@@ -6,8 +6,8 @@ package scf.session6;
  * @author Shivam Kumar Meena
  * created on 21st January, 2020
  */
-public class Poly {
-    private int[][] poly;
+public final class Poly {
+    private final int[][] poly;
     
     /**
      * It initializes the poly with input array
@@ -18,10 +18,12 @@ public class Poly {
      */
     public Poly(int[][] input) throws AssertionError {
         int[][] inputCopy = new int[input.length][2];
+        
         if (input.length == 0) {
             poly = new int[0][0];
             return;
         }
+        
         for (int i = 0; i < input.length; i++) {
             if (input[i].length != 2) {
                 throw new AssertionError();
@@ -34,7 +36,8 @@ public class Poly {
             inputCopy[i][0] = input[i][0];
             inputCopy[i][1] = input[i][1];
         }
-        poly = initializePoly(input);
+        
+        poly = initializePoly(inputCopy);
     }
     
     /**
@@ -103,8 +106,8 @@ public class Poly {
         
         for (int i = 0; i < poly1.poly.length; i++) {
             for (int j = 0; j < poly2.poly.length; j++) {
-                result[indexResult][0] = poly1.poly[i][0] * poly2.poly[i][0];
-                result[indexResult][1] = poly2.poly[i][0] * poly2.poly[i][1];
+                result[indexResult][0] = poly1.poly[i][0] * poly2.poly[j][0];
+                result[indexResult][1] = poly1.poly[i][1] + poly2.poly[j][1];
                 indexResult++;
             }
         }
@@ -112,30 +115,55 @@ public class Poly {
         return new Poly(result);
     }
     
-    // Helper method to properly initialize the poly.
-    public int[][] initializePoly(int[][] input) {
-        int temporaryValue;
+    /**
+     * It checks for the equality of input poly with invoked poly object.
+     * @param polynomial poly to be checked for equality
+     * @return true if polynomial is same as invoked object poly and
+     * false otherwise.
+     */
+    public boolean equals(Poly polynomial) {
+        if (poly.length != polynomial.poly.length) {
+            return false;
+        }
+        
+        for (int i = 0; i < poly.length; i++) {
+            if (poly[i][0] != polynomial.poly[i][0]
+                    || poly[i][1] != polynomial.poly[i][1]) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    /**
+     * It helps in construction of poly. It removes zero coefficient
+     * members. It also combines coeffiecients with same exponent and store
+     * exponent in sorted order.
+     * @param input
+     * @return
+     */
+    private int[][] initializePoly(int[][] input) {
         int countDifferentExponents;
         int[][] result;
         int resultIndex;
+        int[] temporaryArray;
         
-        if (input.length == 0 || input.length == 1) {
+        if (input.length == 0) {
             return input;
         }
         
         // sorting input according to exponent part in ascending order.
         for (int i = 0; i < input.length - 1; i++) {
-            for (int j = i; j < input.length - i - 1; j++) {
-                if (input[i][1] > input[i + 1][1]) {
-                    temporaryValue = input[i][0];
-                    input[i][0] = input[i + 1][0];
-                    input[i][0] = temporaryValue;
-                    temporaryValue = input[i][1];
-                    input[i][1] = input[i + 1][1];
-                    input[i + 1][1] = temporaryValue;
+            for (int j = 0; j < input.length - i - 1; j++) {
+                if (input[j][1] > input[j + 1][1]) {
+                    temporaryArray = input[j];
+                    input[j] = input[j + 1];
+                    input[j + 1] = temporaryArray;
                 }
             }
         }
+        
         
         // counting total number of different exponents in input.
         countDifferentExponents = 1;
@@ -147,8 +175,8 @@ public class Poly {
         
         // assigning input elements to result.
         result = new int[countDifferentExponents][2];
-        result[0][0] = input[0][0];
-        result[0][1] = input[0][1];
+        result[0][0] = input[0][0]; // assigning coeffiecient of first element
+        result[0][1] = input[0][1]; // assigning exponent of first element
         resultIndex = 0;
         for (int i = 1; i < input.length; i++) {
             if (input[i][0] == 0) {
