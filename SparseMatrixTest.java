@@ -15,7 +15,7 @@ public class SparseMatrixTest {
     
     public static class NonParameterizedTestsForAllMethods {
         
-        @Test(expected = AssertionError.class)
+        @Test(expected = IllegalArgumentException.class)
         public void testAddSparseMatrixWhenInputIsInvalid() {
             SparseMatrix sparseMatrix1 = new SparseMatrix(new int[][] {
                                             {1, 1}
@@ -156,6 +156,20 @@ public class SparseMatrixTest {
                     },
                     {
                         new SparseMatrix(new int[][] {
+                                                        {-1, 0, 0, 0},
+                                                        {0, 0, 0, 1}
+                        }),
+                        new SparseMatrix(new int[][] {
+                                                        {1, 0, 0, 0},
+                                                        {0, 0, 0, -1}
+                        }),
+                        new SparseMatrix(new int[][] {
+                                                        {0, 0, 0, 0},
+                                                        {0, 0, 0, 0}
+                        })
+                    },
+                    {
+                        new SparseMatrix(new int[][] {
                                 {1, 1, 1, 1},
                                 {0, 0, 0, 0}
                         }),
@@ -197,7 +211,51 @@ public class SparseMatrixTest {
         @Parameterized.Parameters
         public static Collection<Object[]> input() {
             return Arrays.asList(new Object[][] {
-                                            
+                                            {
+                                                new SparseMatrix(new int[][] {
+                                                                                {1, 0},
+                                                                                {0, 1}
+                                                }),
+                                                new SparseMatrix(new int[][] {
+                                                                                {1, 0},
+                                                                                {0, 1}
+                                                }),
+                                                new SparseMatrix(new int[][] {
+                                                                                {1, 0},
+                                                                                {0, 1}
+                                                })
+                                            },
+                                            {
+                                                new SparseMatrix(new int[][] {
+                                                                                {1, 0, 1},
+                                                                                {0, 1, 0},
+                                                                                {1, 1, 0}
+                                                }),
+                                                new SparseMatrix(new int[][] {
+                                                                                {-1, 0, 0, 1},
+                                                                                {0, 1, 0, -1},
+                                                                                {1, 0, -1, 0}
+                                                }),
+                                                new SparseMatrix(new int[][] {
+                                                                                {0, 0, -1, 1},
+                                                                                {0, 1, 0, -1},
+                                                                                {-1, 1, 0, 0}
+                                                })
+                                            },
+                                            {
+                                                new SparseMatrix(new int[][] {
+                                                                                {1, 2, 3},
+                                                                                {4, 5, 6}
+                                                }),
+                                                new SparseMatrix(new int[][] {
+                                                                                {7, 8},
+                                                                                {9, 10},
+                                                                                {11, 12}
+                                                }),new SparseMatrix(new int[][] {
+                                                                                {58, 64},
+                                                                                {139, 154}
+                                                })
+                                            }
             });
         }
         
@@ -229,7 +287,7 @@ public class SparseMatrixTest {
         @Parameterized.Parameters
         public static Collection<Object[]> input() {
             return Arrays.asList(new Object[][] {
-                    /*{
+                    {
                         new SparseMatrix(new int[][] {
                                 {1, 0, 0},
                                 {0, 0, 0}
@@ -239,7 +297,7 @@ public class SparseMatrixTest {
                                 {0, 0, 0}
                         }),
                         true
-                    },*/
+                    },
                     {
                         new SparseMatrix(new int[][] {
                                 {1, 0},
