@@ -101,7 +101,7 @@
                 result = false;
             } else {
                 for (var i = 0; i < contactNumber.length; i++) {
-                    if(!(contactNumber[i] >= '0' && contactNumber <= '9')) {
+                    if(!(contactNumber[i] >= '0' && contactNumber[i] <= '9')) {
                         result = false;
                     }
                 }
@@ -116,22 +116,20 @@
             document.getElementById('employeeId').innerHTML = id;
             if (isValidEmployeeName() && isValidEmail() && isValidPassword() && doPasswordsMatch() && isContactNumberValid()) {
                 var employeeName = document.getElementById('employeeName').value;
-                document.getElementById('employeeRegistrationForm').innerHTML = 'Hey ' + employeeName + ', you are registerd.';
+                document.getElementById('employeeRegistrationForm').innerHTML = '<h1>Hey ' + employeeName + ', you are registerd.<h1>';
                 document.getElementById('addVehicleForm').style.visibility = 'visible';
             } 
         }
         function addVehichle() {
-            document.getElementById('employeeRegistrationForm').style.display = 'none';
-            document.getElementById('addVehicleForm').innerHTML = 'Vehicle Added';
-
             var dailyPrice = [5, 10, 20];
             var monthlyPrice = [100, 200, 500];
             var yearlyPrice = [500, 1000, 3500];
             
+            //document.getElementById('addVehicleForm').innerHTML = 'Vehicle Added';
             var vehicleType = document.getElementById('vehicleType').value;
             if (vehicleType == 'cycle') {
                 document.getElementById('dailyPrice').innerHTML = dailyPrice[0];
-                document.getElementById('dailyPrice').innerHTML = monthlyPrice[0];
+                document.getElementById('monthlyPrice').innerHTML = monthlyPrice[0];
                 document.getElementById('yearlyPrice').innerHTML = yearlyPrice[0];
             } else if (vehicleType == 'motorcycle') {
                 document.getElementById('dailyPrice').innerHTML = dailyPrice[1];
@@ -142,18 +140,21 @@
                 document.getElementById('monthlyPrice').innerHTML = monthlyPrice[2];
                 document.getElementById('yearlyPrice').innerHTML = yearlyPrice[2];
             }
-            document.getElementById('addVehicleForm').style.display = "none";
+            document.getElementById('employeeRegistrationForm').style.display = 'none';
+            document.getElementById('addVehicleForm').style.display = 'none';
             document.getElementById('selectPass').style.visibility = "visible";
         }
         function setPrice(currencyType, price) {
             document.getElementById('selectPass').style.display = "none";
             if (currencyType == "INR") {
-                console.log("Hello its in setPrice");
-                document.getElementById('showRates').innerHTML = "<h1> Your Cost is " + price + " Rs. , Please Pay the Amount !</h1>"
+                document.getElementById('selectPass').style.display = "none";
+                document.getElementById('showBill').innerHTML = "<h1> Your Cost is " + price + " Rs. , Please Pay the Amount !</h1>"
             } else if (currencyType == "USD") {
-                document.getElementById('showRates').innerHTML = "<h1> Your Cost is " + (price / 72).toFixed(2) + " $ , Please Pay the Amount !</h1>"
+                document.getElementById('selectPass').style.display = "none";
+                document.getElementById('showBill').innerHTML = "<h1> Your Cost is " + (price / 72).toFixed(2) + " $ , Please Pay the Amount !</h1>"
             } else if (currencyType == "YEN") {
-                document.getElementById('showRates').innerHTML = "<h1> Your Cost is " + (price * 1.52).toFixed(2) + " Yen , Please Pay the Amount !</h1>"
+                document.getElementById('selectPass').style.display = "none";
+                document.getElementById('showBill').innerHTML = "<h1> Your Cost is " + (price * 1.52).toFixed(2) + " Yen , Please Pay the Amount !</h1>"
             }
         }
         function getPass() {
@@ -256,9 +257,9 @@
 
     <form id="selectPass">
         <h1>Select the Pass Type</h1>
-        <label><input type="radio" value="daily" name="price">Daily<label id="dailyPrice"></label> Rs.</label><br><br>
-        <label><input type="radio" value="monthly "name="price">Monthly<label id="monthlyPrice"></label> Rs.</label><br><br>
-        <label><input type="radio" value="yearly "name="price">Yearly<label id="yearlyPrice"></label> Rs.</label><br><br>
+        <label><input type="radio" value="daily" name="price">Daily - Rs.<label id="dailyPrice"></label></label><br><br>
+        <label><input type="radio" value="monthly "name="price">Monthly - Rs.<label id="monthlyPrice"></label></label><br><br>
+        <label><input type="radio" value="yearly "name="price">Yearly - Rs.<label id="yearlyPrice"></label></label><br><br>
         <label>Select Currency</label><select id="country">
             <option value="INR">INR</option>
             <option value="USD">USD</option>
@@ -267,7 +268,7 @@
         <input type="button" value="Get Pass" onclick="getPass()"></button>
     </form>
 
-    <div id="showRates">
+    <div id="showBill">
     </div>
 </body>
 
