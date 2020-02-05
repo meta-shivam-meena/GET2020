@@ -44,10 +44,9 @@ public class BookService {
 		return books;
 	}
 
-	@PUT
-	@Path("/getBook")
+	@GET
+	@Path("/getBook/{title}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Book> getBook(@FormParam("title") String title) {
 		List<Book> books = bookDao.getBook(title);
 		return books;
