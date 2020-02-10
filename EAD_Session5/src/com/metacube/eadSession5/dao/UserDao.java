@@ -23,6 +23,14 @@ public class UserDao {
 		return userDao;
 	}
 	
+	public User getUser(int userId) {
+		return userIdAndUserPairs.get(userId);
+	}
+	
+	public List<User> getAllUsers() {
+		return new ArrayList<User>(userIdAndUserPairs.values());
+	}
+	
 	public Response addUser(User user) {
 		if (user == null) {
 			return Response.INVALID_USER;
@@ -34,31 +42,6 @@ public class UserDao {
 				return Response.SUCCESS;
 			}
 		}
-	}
-	
-	public Response deleteUser(int userId) {
-		if (userIdAndUserPairs.containsKey(userId)) {
-			userIdAndUserPairs.remove(userId);
-			return Response.SUCCESS;
-		} else {
-			return Response.USER_NOT_FOUND;
-		}
-	}
-	
-	public boolean exists(int userId) {
-		if (userIdAndUserPairs.containsKey(userId)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public User getUser(int userId) {
-		return userIdAndUserPairs.get(userId);
-	}
-	
-	public List<User> getAllUsers() {
-		return new ArrayList<User>(userIdAndUserPairs.values());
 	}
 	
 	public Response updateUserId(int userId, int newUserId) {
@@ -94,6 +77,28 @@ public class UserDao {
 			return Response.SUCCESS;
 		} else {
 			return Response.USER_NOT_FOUND;
+		}
+	}
+	
+	public Response deleteUser(int userId) {
+		if (userIdAndUserPairs.containsKey(userId)) {
+			userIdAndUserPairs.remove(userId);
+			return Response.SUCCESS;
+		} else {
+			return Response.USER_NOT_FOUND;
+		}
+	}
+	
+	public Response deleteAllUsers() {
+		userIdAndUserPairs.clear();
+		return Response.SUCCESS;
+	}
+	
+	public boolean exists(int userId) {
+		if (userIdAndUserPairs.containsKey(userId)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

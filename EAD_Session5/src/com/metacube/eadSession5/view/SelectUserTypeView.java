@@ -6,6 +6,7 @@ public class SelectUserTypeView implements View {
 		System.out.println();
 		System.out.println("1. Store Manager");
 		System.out.println("2. Customer");
+		System.out.println("0. Exit");
 		System.out.print("Select User Type: ");
 	}
 }

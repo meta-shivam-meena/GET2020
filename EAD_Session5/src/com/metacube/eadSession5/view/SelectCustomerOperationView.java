@@ -20,11 +20,13 @@ public class SelectCustomerOperationView implements View {
 		
 		System.out.println();
 		
-		System.out.println("8. Add Product To Cart");
-		System.out.println("9. Add Product With Quantity To Cart");
-		System.out.println("10. Update Product Quantity In Cart");
-		System.out.println("11. Delete Product From Cart");
-		System.out.println("12. Clear Cart");
+		System.out.println("8. Add Product In Shopping Cart");
+		System.out.println("9. Add Product With Quantity In Shopping Cart");
+		System.out.println("10. Update Product Quantity In Shopping Cart");
+		System.out.println("11. Delete Product From Shopping Cart");
+		System.out.println("12. Clear Shopping Cart");
+		System.out.println("13. View Shopping Cart");
+		System.out.println("0. Exit");
 		
 		System.out.println();
 		

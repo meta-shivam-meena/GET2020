@@ -21,24 +21,16 @@ public class UserFacade {
 		return userFacade;
 	}
 	
-	public Response addUser(User user) {
-		return userDao.addUser(user);
-	}
-	
-	public Response deleteUser(int userId) {
-		return userDao.deleteUser(userId);
-	}
-	
-	public boolean exits(int userId) {
-		return userDao.exists(userId);
-	}
-	
 	public User getUser(int userId) {
 		return userDao.getUser(userId);
 	}
 	
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();
+	}
+	
+	public Response addUser(User user) {
+		return userDao.addUser(user);
 	}
 	
 	public Response updateUserId(int userId, int newUserId) {
@@ -51,5 +43,17 @@ public class UserFacade {
 	
 	public Response updateUserEmail(int userId, String newEmail) {
 		return userDao.updateUserEmail(userId, newEmail);
+	}
+	
+	public Response deleteUser(int userId) {
+		return userDao.deleteUser(userId);
+	}
+	
+	public Response deleteAllUsers() {
+		return userDao.deleteAllUsers();
+	}
+	
+	public boolean exits(int userId) {
+		return userDao.exists(userId);
 	}
 }

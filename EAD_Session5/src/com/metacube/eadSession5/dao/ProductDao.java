@@ -1,6 +1,7 @@
 package com.metacube.eadSession5.dao;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -23,6 +24,27 @@ public class ProductDao {
 		return productDao;
 	}
 
+	public Product getProduct(int productId) {
+		return productIdAndProductPairs.get(productId);
+	}
+
+	public List<Product> getProductByType(String type) {
+		List<Product> products = new ArrayList<Product>(
+				productIdAndProductPairs.values());
+		Iterator<Product> iterator = products.iterator();
+		while (iterator.hasNext()) {
+			Product product = iterator.next();
+			if (!product.getType().equals(type)) {
+				iterator.remove();
+			}
+		}
+		return products;
+	}
+
+	public List<Product> getAllProducts() {
+		return new ArrayList<Product>(productIdAndProductPairs.values());
+	}
+
 	public Response addProduct(Product product) {
 		if (product == null) {
 			return Response.INVALID_USER;
@@ -33,31 +55,6 @@ public class ProductDao {
 				productIdAndProductPairs.put(product.getId(), product);
 				return Response.SUCCESS;
 			}
-		}
-	}
-	
-	public Product getProduct(int productId) {
-		return productIdAndProductPairs.get(productId);
-	}
-	
-	public List<Product> getAllProducts() {
-		return new ArrayList<Product>(productIdAndProductPairs.values());
-	}
-
-	public Response deleteProduct(int productId) {
-		if (productIdAndProductPairs.containsKey(productId)) {
-			productIdAndProductPairs.remove(productId);
-			return Response.SUCCESS;
-		} else {
-			return Response.PRODUCT_NOT_FOUND;
-		}
-	}
-	
-	public boolean exists(int productId) {
-		if (productIdAndProductPairs.containsKey(productId)) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 
@@ -104,6 +101,28 @@ public class ProductDao {
 			return Response.SUCCESS;
 		} else {
 			return Response.PRODUCT_NOT_FOUND;
+		}
+	}
+
+	public Response deleteProduct(int productId) {
+		if (productIdAndProductPairs.containsKey(productId)) {
+			productIdAndProductPairs.remove(productId);
+			return Response.SUCCESS;
+		} else {
+			return Response.PRODUCT_NOT_FOUND;
+		}
+	}
+
+	public Response deleteAllProducts() {
+		productIdAndProductPairs.clear();
+		return Response.SUCCESS;
+	}
+
+	public boolean exists(int productId) {
+		if (productIdAndProductPairs.containsKey(productId)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
