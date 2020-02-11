@@ -80,8 +80,8 @@ public class StoreController {
 		return productFacade.getProduct(productId);
 	}
 	
-	public View addProduct(int productId, String name, String type, double price) {
-		Product product = new Product(productId, name, type, price);
+	public View addProduct(int productId, String type, String name, double price) {
+		Product product = new Product(productId, type, name, price);
 		return new ResponseView(productFacade.addProduct(product));
 	}
 	
@@ -227,7 +227,7 @@ public class StoreController {
 				switch (userType) {
 				case 1:
 					int storeManagerOperation = 0;
-					storeManagerHome: while (true) {
+					while (true) {
 						selectStoreManagerOperationView.view();
 						storeManagerOperation = scanner.nextInt();
 						switch (storeManagerOperation) {
@@ -242,7 +242,7 @@ public class StoreController {
 						{
 							enterProductTypeView.view();
 							String productType = scanner.next();
-							viewProductByType(productType);
+							viewProductByType(productType).view();
 						}
 							break;
 						case 3:
@@ -260,7 +260,7 @@ public class StoreController {
 							String name = scanner.next();
 							enterProductPriceView.view();
 							double price = scanner.nextDouble();
-							addProduct(productId, name, type, price).view();
+							addProduct(productId, type, name, price).view();
 						}
 							break;
 						case 5:
@@ -400,7 +400,7 @@ public class StoreController {
 						{
 							enterUserIdView.view();
 							int userId = scanner.nextInt();
-							customerOperationHome: while (true) {
+							while (true) {
 								selectCustomerOperationView.view();
 								int customerOperation = scanner.nextInt();
 								switch (customerOperation) {
@@ -492,7 +492,7 @@ public class StoreController {
 									break;
 								case 13:
 								{
-									viewShoppingCart(userId);
+									viewShoppingCart(userId).view();
 								}
 								case 0:
 									continue home;
@@ -515,7 +515,7 @@ public class StoreController {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				new ResponseView(Response.INVALID_INPUT).view();
+				new ResponseView(Response.INVALID_OPTION).view();
 				init();
 			}
 		}

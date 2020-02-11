@@ -38,10 +38,14 @@ public class ShoppingCartDao {
 				if (productFacade.exists(productId)) {
 					Map<Integer, Integer> productIdAndQuantityPairs = shoppingCart
 							.getProductIdAndQuantityPairs();
-					productIdAndQuantityPairs
-							.put(productId,
-									productIdAndQuantityPairs.get(productId)
-											+ quantity);
+					if (productIdAndQuantityPairs.containsKey(productId)) {
+						productIdAndQuantityPairs
+						.put(productId,
+								productIdAndQuantityPairs.get(productId)
+										+ quantity);
+					} else {
+						productIdAndQuantityPairs.put(productId, quantity);
+					}
 					return Response.SUCCESS;
 				} else {
 					return Response.PRODUCT_NOT_FOUND;

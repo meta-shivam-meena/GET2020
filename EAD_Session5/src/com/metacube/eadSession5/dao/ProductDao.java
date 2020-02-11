@@ -1,7 +1,6 @@
 package com.metacube.eadSession5.dao;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -29,13 +28,10 @@ public class ProductDao {
 	}
 
 	public List<Product> getProductByType(String type) {
-		List<Product> products = new ArrayList<Product>(
-				productIdAndProductPairs.values());
-		Iterator<Product> iterator = products.iterator();
-		while (iterator.hasNext()) {
-			Product product = iterator.next();
-			if (!product.getType().equals(type)) {
-				iterator.remove();
+		List<Product> products = new ArrayList<Product>();
+		for (Product product: productIdAndProductPairs.values()) {
+			if (product.getType().equals(type)) {
+				products.add(product);
 			}
 		}
 		return products;
@@ -47,7 +43,7 @@ public class ProductDao {
 
 	public Response addProduct(Product product) {
 		if (product == null) {
-			return Response.INVALID_USER;
+			return Response.INVALID_PRODUCT;
 		} else {
 			if (productIdAndProductPairs.containsKey(product.getId())) {
 				return Response.DUPLICATE_PRODUCT_ID;
