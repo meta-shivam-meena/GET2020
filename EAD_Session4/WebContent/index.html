@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Metacube Parking System</title>
+</head>
+<body>
+	<div>
+		<a href="login.html">Login</a>
+	</div>
+	<h1>Metacube Parking System</h1>
+	<form action="/RegisterEmployee" method="post">
+		<h2>Register Employee</h2>
+		<table>
+			<tr>
+				<td>Full Name</td>
+				<td><input type="text" name="fullName" required="required"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td><input type="radio" name="gender" value="male"
+					checked="checked">Male <input type="radio" name="gender"
+					value="female">Female</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="email" name="email" required="required">
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" required="required"></td>
+			</tr>
+			<tr>
+				<td>Confirm Password</td>
+				<td><input type="Password" name="confirmPassword"
+					required="required"></td>
+			</tr>
+			<tr>
+				<td>ContactNumber</td>
+				<td><input type="text" name="contactNumber" required="required"></td>
+			</tr>
+			<tr>
+				<td>Organization</td>
+				<td><select name="organization" required="required">
+						<option value="metacube">Metacube
+						<option value="google">Google
+						<option value="amazon">Amazon
+						<option value="microsoft">Micorsoft
+				</select></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Register"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
