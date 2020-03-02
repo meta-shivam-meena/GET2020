@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metacube Parking System</title>
+</head>
+
+<body>
+
+  <!-- Page Heading -->
+  <div id="page-heading-container">
+    <h1 id="page-heading">Metacube Parking System</h1>
+  </div>
+
+  <!-- Navigation Bar -->
+  <div id="page-navigation-bar-container">
+    <nav id="page-navigation-bar">
+      <a href="#add-employee-container">Add Employee</a>
+      <a href="#add-vehicle-container">Add Vehicle</a>
+      <a href="#give-feedback-container">Give Feedback</a>
+      <a href="#pricing-container">Pricing</a>
+    </nav>
+  </div>
+
+  <!-- Page Cover -->
+  <div id="page-cover-image-container">
+    <img id="page-cover-image" src="parking-site.jpg" alt="Parking Site" width="100%">
+  </div>
+
+  <!-- Add Employee Section -->
+  <div id="add-employee-container">
+    <div id="add-employee-heading-container">
+      <h2 id="add-employee-heading">Add Employee</h2>
+    </div>
+
+    <div id="add-employee-form-container">
+      <form id="add-employee-form">
+        <div>
+          <label for="employee-full-name">Full Name</label>
+          <input id="employee-full-name" type="text" name="full-name" required>
+        </div>
+
+        <div>
+          <fieldset>
+            <legend>Gender</legend>
+
+            <div>
+              <input id="gender-male" type="radio" name="gender" value="male" checked>
+              <label for="gender-male">Male</label>
+            </div>
+
+            <div>
+              <input id="gender-female" type="radio" name="gender" value="female">
+              <label for="gender-female">Female</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div>
+          <label for="employee-email">Email</label>
+          <input id="employee-email" type="email" name="email" required>
+        </div>
+
+        <div>
+          <label for="employee-password">Password</label>
+          <input id="employee-password" type="password" name="password" required>
+        </div>
+
+        <div>
+          <label for="employee-confirm-password">Confirm Password</label>
+          <input id="employee-confirm-password" type="password" name="confirm-password" required>
+        </div>
+
+        <div>
+          <label for="employee-contact-number">Contact Number</label>
+          <input id="employee-contact-number" type="text" name="contact-number" required>
+        </div>
+
+        <div>
+          <div>
+            <input type="submit" value="Add Employee">
+          </div>
+          <div>
+            <input type="reset" value="Reset">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Vehicle Section -->
+  <div id="add-vehicle-container">
+    <div id="add-vehicle-heading-container">
+      <h2 id="add-vehicle-heading">Add Vehicle</h2>
+    </div>
+
+    <div id="add-vehicle-form-container">
+      <form id="add-vehicle-form">
+        <div>
+          <label for="vehicle-make">Vehicle Make</label>
+          <input id="vehicle-make" type="text" name="vehicle-brand" placeholder="company" required>
+        </div>
+
+        <div>
+          <label for="vehicle-model">Vehicle Model</label>
+          <input id="vehicle-model" type="text" name="vehicle-model" required>
+        </div>
+
+        <div>
+          <label for="vehicle-type">Vehicle Type</label>
+          <select id="vehicle-type" size="3">
+            <option value="Cycle">Cycle</option>
+            <option value="Motorcycle">Motorcycle</option>
+            <option value="Four Wheeler">Four Wheeler</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="vehicle-number">Vehicle Number</label>
+          <input id="vehicle-number" type="text" required>
+        </div>
+
+        <div>
+          <label for="employee-id">Employee Id</label>
+          <input id="employee-id" type="number" required disabled>
+        </div>
+
+        <div>
+          <label for="vehicle-identification">Identification</label>
+          <textarea id="vehicle-identification" name="identification"
+            placeholder="color, mark, visible accessory etc."></textarea>
+        </div>
+
+        <div>
+          <div>
+            <input type="submit" value="Add Vehicle">
+          </div>
+          <div>
+            <input type="reset" value="Reset">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Give Feedback Section -->
+  <div id="give-feedback-container">
+    <div id="give-feedback-heading-container">
+      <h2 id="give-feedback-heading">Give Feedback</h2>
+    </div>
+
+    <div id="feedback-form-container">
+      <form id="feedback-form">
+        <div>
+          <label for="feedback-provider-name">Name</label>
+          <input id="feedback-provider-name" type="text" name="name" required>
+        </div>
+
+        <div>
+          <label for="feedback-provider-email">Email</label>
+          <input id="feedback-provider-email" type="email" name="email" required>
+        </div>
+
+        <div>
+          <label for="feedback-subject">Subject</label>
+          <input id="feedback-subject" type="text" name="subject" required>
+        </div>
+
+        <div>
+          <label for="feedback-message">Message</label>
+          <textarea id="feedback-message"></textarea>
+        </div>
+
+        <div>
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pricing Section -->
+  <div id="pricing-container">
+    <div id="pricing-heading-container">
+      <h2 id="pricing-heading">Pricing</h2>
+    </div>
+
+    <div id="pricing-forms-container">
+
+      <!-- Cycle Pricing Card -->
+      <div id="cycle-pricing-card" class="pricing-card">
+        <form>
+
+          <div>
+            <div class="card-heading">Cycle</div>
+            <div>
+              <img src="cycle.png" alt="Cycle Logo" width="100px">
+            </div>
+            <div>
+              <fieldset>
+                <legend>Select Plan</legend>
+                <div>
+                  <input id="cycle-price-plan-daily" type="radio" name="cycle-price-plan" value="5" checked>
+                  <label for="cycle-price-plan-daily">$5</label>
+                </div>
+
+                <div>
+                  <input id="cycle-price-plan-monthly" type="radio" name="cycle-price-plan" value="100">
+                  <label for="cycle-price-plan-monthly">$100</label>
+                </div>
+
+                <div>
+                  <input id="cycle-price-plan-yearly" type="radio" name="cycle-price-plan" value="500">
+                  <label for="cycle-price-plan-yearly">$500</label>
+                </div>
+              </fieldset>
+            </div>
+            <div>
+              <input type="submit" value="Purchase Now">
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Motorcycle Pricing Card -->
+      <div id="motorcycle-pricing-card" class="pricing-card">
+        <form>
+
+          <div>
+            <div class="card-heading">Motorcycle</div>
+            <div>
+              <img src="motorcycle.png" alt="Motorcycle Logo" width="100px">
+            </div>
+            <div>
+              <fieldset>
+                <legend>Select Plan</legend>
+
+                <div>
+                  <input id="motorcycle-price-plan-daily" type="radio" name="motorcycle-price-plan" value="10" checked>
+                  <label for="motorcycle-price-plan-daily">$10</label>
+                </div>
+
+                <div>
+                  <input id="motorcycle-price-plan-monthly" type="radio" name="motorcycle-price-plan" value="200">
+                  <label for="motorcycle-price-plan-monthly">$200</label>
+                </div>
+
+                <div>
+                  <input id="motorcycle-price-plan-yearly" type="radio" name="motorcycle-price-plan" value="1000">
+                  <label for="motorcycle-price-plan-yearly">$1000</label>
+                </div>
+
+              </fieldset>
+            </div>
+            <div>
+              <input type="submit" value="Purchase Now">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Four Wheeler Pricing Card -->
+      <div id="four-wheeler-pricing-card" class="pricing-card">
+        <form>
+
+          <div>
+
+            <div class="card-heading">Four Wheeler</div>
+
+            <div>
+              <img src="four-wheeler.png" alt="Four Wheeler Logo" width="100px">
+            </div>
+
+            <div>
+              <fieldset>
+                <legend>Select Plan</legend>
+
+                <div>
+                  <input id="four-wheeler-price-plan-daily" type="radio" name="four-wheeler-price-plan" value="200"
+                    checked>
+                  <label for="four-wheeler-price-plan-daily">$200</label>
+                </div>
+
+                <div>
+                  <input id="four-wheeler-price-plan-monthly" type="radio" name="four-wheeler-price-plan" value="500">
+                  <label for="four-wheeler-price-plan-monthly">$500</label>
+                </div>
+
+                <div>
+                  <input id="four-wheeler-price-plan-yearly" type="radio" name="four-wheeler-price-plan" value="3500">
+                  <label for="four-wheeler-price-plan-yearly">$3500</label>
+                </div>
+
+              </fieldset>
+            </div>
+            
+            <div>
+              <input type="submit" value="Purchase Now">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
