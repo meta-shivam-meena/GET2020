@@ -94,10 +94,30 @@ body, html {
   margin: 5px;
 }
 
-#pricing-container {
-  background-color: slategray;
+.pricing-card {
+  display: inline-block;
+  background-color: lightgray;
+  border-radius: 10px;
+  width: 200px;
+  margin: 40px;
+  margin-left: 150px;
+  align-content: center;
 }
 
-.pricing-card {
-  
+.pricing-card-container {
+  align-content: center;
+}
+
+.pricing-card-container > div {
+  display: inline;
+  margin-left: 30px;
+  padding-bottom: 20px;
+}
+
+.card-heading {
+  margin-top: 20px;
+}
+
+fieldset {
+  border: none;
 }

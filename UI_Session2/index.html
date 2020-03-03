@@ -160,7 +160,7 @@
           <label class="input-label" for="feedback-message">Message</label>
           <textarea id="feedback-message" class="input-input"></textarea>
         </div>
-        
+
         <div class="add-form-buttons">
           <input type="submit" value="Submit">
           <input type="reset" value="Reset">
@@ -171,126 +171,134 @@
 
   <!-- Pricing Section -->
   <div id="pricing-container">
+
     <div id="pricing-heading-container">
       <h2 id="pricing-heading">Pricing</h2>
     </div>
 
-    <div id="pricing-cards-container">
+    <!-- Cycle Pricing Card -->
+    <div id="cycle-pricing-card" class="pricing-card">
+      <form>
 
-      <!-- Cycle Pricing Card -->
-      <div id="cycle-pricing-card" class="pricing-card">
-        <form>
-
-          <div>
-            <div class="card-heading">Cycle</div>
-            <div>
-              <img src="cycle.png" alt="Cycle Logo" width="100px">
-            </div>
-            <div>
-              <fieldset>
-                <legend>Select Plan</legend>
-                <div>
-                  <input id="cycle-price-plan-daily" type="radio" name="cycle-price-plan" value="5" checked>
-                  <label for="cycle-price-plan-daily">$5</label>
-                </div>
-
-                <div>
-                  <input id="cycle-price-plan-monthly" type="radio" name="cycle-price-plan" value="100">
-                  <label for="cycle-price-plan-monthly">$100</label>
-                </div>
-
-                <div>
-                  <input id="cycle-price-plan-yearly" type="radio" name="cycle-price-plan" value="500">
-                  <label for="cycle-price-plan-yearly">$500</label>
-                </div>
-              </fieldset>
-            </div>
-            <div>
-              <input type="submit" value="Purchase Now">
-            </div>
+        <div class="pricing-card-container">
+          <div class="card-heading">
+            Cycle
+            <br>
           </div>
 
-        </form>
-      </div>
-
-      <!-- Motorcycle Pricing Card -->
-      <div id="motorcycle-pricing-card" class="pricing-card">
-        <form>
+          <div class="logo-container">
+            <img src="cycle.png" alt="Cycle Logo" width="100px">
+          </div>
 
           <div>
-            <div class="card-heading">Motorcycle</div>
-            <div>
-              <img src="motorcycle.png" alt="Motorcycle Logo" width="100px">
-            </div>
-            <div>
-              <fieldset>
-                <legend>Select Plan</legend>
+            <fieldset>
+              <div>
+                <input id="cycle-price-plan-daily" type="radio" name="cycle-price-plan" value="5" checked>
+                <label for="cycle-price-plan-daily">$5 per day</label>
+              </div>
 
-                <div>
-                  <input id="motorcycle-price-plan-daily" type="radio" name="motorcycle-price-plan" value="10" checked>
-                  <label for="motorcycle-price-plan-daily">$10</label>
-                </div>
+              <div>
+                <input id="cycle-price-plan-monthly" type="radio" name="cycle-price-plan" value="100">
+                <label for="cycle-price-plan-monthly">$100 per month</label>
+              </div>
 
-                <div>
-                  <input id="motorcycle-price-plan-monthly" type="radio" name="motorcycle-price-plan" value="200">
-                  <label for="motorcycle-price-plan-monthly">$200</label>
-                </div>
-
-                <div>
-                  <input id="motorcycle-price-plan-yearly" type="radio" name="motorcycle-price-plan" value="1000">
-                  <label for="motorcycle-price-plan-yearly">$1000</label>
-                </div>
-
-              </fieldset>
-            </div>
-            <div>
-              <input type="submit" value="Purchase Now">
-            </div>
+              <div>
+                <input id="cycle-price-plan-yearly" type="radio" name="cycle-price-plan" value="500">
+                <label for="cycle-price-plan-yearly">$500 per year</label>
+              </div>
+            </fieldset>
           </div>
-        </form>
-      </div>
 
-      <!-- Four Wheeler Pricing Card -->
-      <div id="four-wheeler-pricing-card" class="pricing-card">
-        <form>
+          <div class="card-button">
+            <input type="submit" value="Purchase Now">
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Motorcycle Pricing Card -->
+    <div id="motorcycle-pricing-card" class="pricing-card">
+      <form>
+
+        <div class="pricing-card-container">
+          <div class="card-heading">
+            Motorcycle
+          </div>
+
+          <div class="logo-container">
+            <img src="motorcycle.png" alt="Motorcycle Logo" width="100px">
+          </div>
 
           <div>
+            <fieldset>
+              <div>
+                <input id="motorcycle-price-plan-daily" type="radio" name="motorcycle-price-plan" value="10" checked>
+                <label for="motorcycle-price-plan-daily">$10 per day</label>
+              </div>
 
-            <div class="card-heading">Four Wheeler</div>
+              <div>
+                <input id="motorcycle-price-plan-monthly" type="radio" name="motorcycle-price-plan" value="200">
+                <label for="motorcycle-price-plan-monthly">$200 per month</label>
+              </div>
 
-            <div>
-              <img src="four-wheeler.png" alt="Four Wheeler Logo" width="100px">
-            </div>
+              <div>
+                <input id="motorcycle-price-plan-yearly" type="radio" name="motorcycle-price-plan" value="1000">
+                <label for="motorcycle-price-plan-yearly">$1000 per year</label>
+              </div>
 
-            <div>
-              <fieldset>
-                <legend>Select Plan</legend>
-
-                <div>
-                  <input id="four-wheeler-price-plan-daily" type="radio" name="four-wheeler-price-plan" value="200"
-                    checked>
-                  <label for="four-wheeler-price-plan-daily">$200</label>
-                </div>
-
-                <div>
-                  <input id="four-wheeler-price-plan-monthly" type="radio" name="four-wheeler-price-plan" value="500">
-                  <label for="four-wheeler-price-plan-monthly">$500</label>
-                </div>
-
-                <div>
-                  <input id="four-wheeler-price-plan-yearly" type="radio" name="four-wheeler-price-plan" value="3500">
-                  <label for="four-wheeler-price-plan-yearly">$3500</label>
-                </div>
-
-              </fieldset>
-            </div>
-
-            <div>
-              <input type="submit" value="Purchase Now">
-            </div>
+            </fieldset>
           </div>
-        </form>
-      </div>
+          
+          <div class="card-button">
+            <input type="submit" value="Purchase Now">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Four Wheeler Pricing Card -->
+    <div id="four-wheeler-pricing-card" class="pricing-card">
+      <form>
+
+        <div class="pricing-card-container">
+
+          <div class="card-heading">
+            Four Wheeler
+          </div>
+
+          <div class="logo-container">
+            <img src="four-wheeler.png" alt="Four Wheeler Logo" width="100px">
+          </div>
+
+          <div>
+            <fieldset>
+
+              <div>
+                <input id="four-wheeler-price-plan-daily" type="radio" name="four-wheeler-price-plan" value="200"
+                  checked>
+                <label for="four-wheeler-price-plan-daily">$200 per day</label>
+              </div>
+
+              <div>
+                <input id="four-wheeler-price-plan-monthly" type="radio" name="four-wheeler-price-plan" value="500">
+                <label for="four-wheeler-price-plan-monthly">$500 per month</label>
+              </div>
+
+              <div>
+                <input id="four-wheeler-price-plan-yearly" type="radio" name="four-wheeler-price-plan" value="3500">
+                <label for="four-wheeler-price-plan-yearly">$3500 per year</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="card-button">
+            <input type="submit" value="Purchase Now">
+          </div>
+
+        </div>
+      </form>
     </div>
   </div>
 
