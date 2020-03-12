@@ -47,14 +47,13 @@
                     </td>
                     <td>
                         <label>
-                            <input type="radio" name="EmpGender" id="EmpGenderM" value="M"
+                            <input type="radio" name="EmpGender" id="EmpGenderM" value="M" onclick="genderFunction()"
                                 required>Male
                         </label>
                         <label>
-                            <input type="radio" name="EmpGender" id="EmpGenderF" value="F"
+                            <input type="radio" name="EmpGender" id="EmpGenderF" value="F" onclick="genderFunction()"
                                 required>Female
                         </label>
-                        <button onclick="genderFunction()">next</button>
                     </td>
                 </tr>
                 <tr id="emp-password-row" style="display: none">
@@ -75,7 +74,7 @@
                     <td>
                         <input type="password" name="EmpConfirmPassword" id="EmpConfirmPassword"
                             placeholder="Enter same password again" onkeypress="return confirmPassword(event)"
-                            pattern="(?=.*\d)(?=.*[a-z).{4,}" minlength="4" title="(should be same as above)" required>
+                            pattern="(?=.*\d)(?=.*[a-z]).{4,}" minlength="4" title="(should be same as above)" required>
                     </td>
                 </tr>
                 <tr id="emp-contact-row" style="display: none">
@@ -121,12 +120,12 @@
                         <b>Vehicle Type: </b>
                     </td>
                     <td>
-                        <select name="EmpVehicleType" id="EmpVehicleType" required>
+                        <select name="EmpVehicleType" id="EmpVehicleType" onchange="vehicleType()" required>
+                            <option value="select vehicle type">select vehicle type</option>
                             <option value="Cycle"> Cycle </option>
                             <option value="MotorCycle"> Motor Cycle </option>
                             <option value="FourWheeler"> Four Wheeler </option>
                         </select>
-                        <button onclick="vehicleType()">next</button>
                     </td>
                 </tr>
                 <tr id="vehicle-number" style="display: none;">

@@ -9,7 +9,7 @@
                 empDetails = document.getElementById('employee-form');
                 var v1 = document.getElementById('EmpName').value + '';
                 var v2 = document.getElementById('EmpContactNumber').value + '';
-                document.getElementById('EmpId').value = v1.slice(0, 2) + v2.slice(0, 4) + v1.slice(2, 4);
+                document.getElementById('EmpId').value = Date.now();
                 hideEmpForm();
                 showVehicleForm();
             }
@@ -108,11 +108,12 @@
                     document.getElementById('emp-name-row').style.display = "none";
                     document.getElementById('emp-email-row').style.display = "inherit";
                     var name = document.getElementById("EmpName").value;
-                    document.getElementById("message").innerHTML = "hello "+ name + " please enter your email ";
+                    document.getElementById("message").innerHTML = "hello " + name + " please enter your email ";
                 }
                 return false;
             }
         }
+        
         //validate email
         function emailFunction(e)
         {
@@ -142,6 +143,7 @@
             document.getElementById('emp-password-row').style.display = "inherit";
             document.getElementById('emp-confirm-password-row').style.display = "inherit";
             document.getElementById("message").innerHTML = "please enter your password ";
+            return false;
         }
 
         function passwordFunction(e)
@@ -159,7 +161,7 @@
             {
                 document.getElementById('EmpPassword').style.borderColor = "green";
             }
-            if(e.keyCode == 13)
+            if(e.keyPress == 9)
             {
                 //validating password
                 var empPassword = document.getElementById('employee-form')[4];
@@ -216,6 +218,7 @@
                         document.getElementById("message").innerHTML = "please enter your contact ";
                         document.getElementById("emp-contact-row").style.display = "inherit";
                         document.getElementById("emp-submit-row").style.display = "inherit";
+                        return true;
                     }
                 }
                 return false
