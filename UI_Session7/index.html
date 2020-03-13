@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Metacube Parking System</title>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Metacube Parking System</h1>
+    </div>
+    <hr>
+    <div id="employee-form-container">
+        <form id="employee-form">
+            <h2>Employee Registration</h2>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <label id="message"></label>
+                    </td>
+                </tr>
+                <tr id="emp-name-row">
+                    <td>
+                        <b>Name: </b>
+                    </td>
+                    <td>
+                        <input type="text" name="EmpName" id="EmpName" placeholder="Enter your name"
+                            pattern="([a-zA-Z]+)"
+                            title="(should contain only alphabet's and minimum length should be 2)" minlength="2"
+                            onkeypress="return nameFunction(event)" required>
+                    </td>
+                </tr>
+                <tr id="emp-email-row" style="display: none">
+                    <td>
+                        <b>Email: </b>
+                    </td>
+                    <td>
+                        <input type="email" name="EmpEmail" id="EmpEmail" placeholder="Enter your email"
+                            onkeypress="return emailFunction(event)" required>
+                    </td>
+                </tr>
+                <tr id="emp-gender-row" style="display: none">
+                    <td>
+                        <b>Gender: </b>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="EmpGender" id="EmpGenderM" value="M" onclick="genderFunction()"
+                                required>Male
+                        </label>
+                        <label>
+                            <input type="radio" name="EmpGender" id="EmpGenderF" value="F" onclick="genderFunction()"
+                                required>Female
+                        </label>
+                    </td>
+                </tr>
+                <tr id="emp-password-row" style="display: none">
+                    <td>
+                        <b>Password: </b>
+                    </td>
+                    <td>
+                        <input type="password" name="EmpPassword" id="EmpPassword" placeholder="Enter your password"
+                            onkeypress="return passwordFunction(event)" pattern="(?=.*\d)(?=.*[a-z]).{4,}" minlength="4"
+                            title="(should be minimum 4 character and should contain  lower case and number characters)"
+                            required>
+                    </td>
+                </tr>
+                <tr id="emp-confirm-password-row" style="display: none">
+                    <td>
+                        <b>Confirm Password: </b>
+                    </td>
+                    <td>
+                        <input type="password" name="EmpConfirmPassword" id="EmpConfirmPassword"
+                            placeholder="Enter same password again" onkeypress="return confirmPassword(event)"
+                            pattern="(?=.*\d)(?=.*[a-z]).{4,}" minlength="4" title="(should be same as above)" required>
+                    </td>
+                </tr>
+                <tr id="emp-contact-row" style="display: none">
+                    <td>
+                        <b>Contact Number: </b>
+                    </td>
+                    <td>
+                        <input type="text" name="EmpContactNumber" id="EmpContactNumber"
+                            placeholder="Enter your contact number" pattern="[0-9]+" minlength="8"
+                            title="(should be numeric only and minimum 8 numbers" required>
+                    </td>
+                </tr>
+                <tr id="emp-submit-row" style="display: none">
+                    <td colspan="2">
+                        <input type="button" value="Next" onclick="submitEmpForm()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="VehicleRegisterDiv" style="display: none">
+        <br />
+        <form id="vehicleForm">
+            <h2>Vehicle Registration</h2>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <label id="vehicle-message"></label>
+                    </td>
+                </tr>
+                <tr id="vehicle-name">
+                    <td>
+                        <b>Vehicle Name: </b>
+                    </td>
+                    <td>
+                        <input type="text" name="EmpVehicleName" id="EmpVehicleName"
+                            onkeypress="return vehicleName(event)" placeholder="Enter your vehicle name"
+                            pattern="[a-zA-Z]+" minlength="4" required>
+                    </td>
+                </tr>
+                <tr id="vehicle-type" style="display: none;">
+                    <td>
+                        <b>Vehicle Type: </b>
+                    </td>
+                    <td>
+                        <select name="EmpVehicleType" id="EmpVehicleType" onchange="vehicleType()" required>
+                            <option value="select vehicle type">select vehicle type</option>
+                            <option value="Cycle"> Cycle </option>
+                            <option value="MotorCycle"> Motor Cycle </option>
+                            <option value="FourWheeler"> Four Wheeler </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="vehicle-number" style="display: none;">
+                    <td>
+                        <b>Vehicle Number: </b>
+                    </td>
+                    <td>
+                        <input type="text" name="EmpVehicleNumber" id="EmpVehicleNumber"
+                            onkeypress="return vehicleNumber(event)" placeholder="Enter your vehicle number" required>
+                    </td>
+                </tr>
+                <tr id="vehicle-empId" style="display: none;">
+                    <td>
+                        <b>Employee Id: </b>
+                    </td>
+                    <td>
+                        <input type="text" name="EmpId" id="EmpId" readonly required>
+                    </td>
+                </tr>
+                <tr id="vehicle-identification" style="display: none;">
+                    <td>
+                        <b>Vehicle Identification: </b>
+                    </td>
+                    <td>
+                        <textarea name="EmpVehicleIdentification" id="EmpVehicleIdentification" cols="20" rows="5"
+                            placeholder="Enter your vehicle identifications" required></textarea>
+                    </td>
+                </tr>
+                <tr id="vehicle-submit" style="display: none;">
+                    <td colspan="2">
+                        <input type="button" value="Next" onclick="submitVehicleForm()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="SelectPlanDiv" style="display: none">
+        <br/>
+        <form id="planForm">
+            <h2>Plan Selection</h2>
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <b>Currency: </b>
+                        <select name="CurrencySelect" id="CurrencySelect" onchange="showCurrency()" required>
+                            <option value="INR">INR</option>
+                            <option value="USD">USD</option>
+                            <option value="YEN">YEN</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Plan: </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" name="VehiclePlan" id="DailyPlan" value="Daily" required
+                                onclick="showTotal()">Daily
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="VehiclePlan" id="MonthlyPlan" value="Monthly" required
+                                onclick="showTotal()">Monthly
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="VehiclePlan" id="YearlyPlan" value="Yearly" required
+                                onclick="showTotal()">Yearly
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="costField">
+                        <label id="DailyCost"></label>
+                    </td>
+                    <td id="costField">
+                        <label id="MonthlyCost"></label>
+                    </td>
+                    <td id="costField">
+                        <label id="YearlyCost"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <b>Total Cost: </b>
+                        <input type="text" name="TotalCost" id="TotalCost" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input type="button" value="Register" onclick="submitPlanForm()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <div id="ConfirmDetailsDiv" style="display: none">
+            <br />
+            <h2>Confirm Details</h2>
+            <form action="" id="confirmDetailsForm">
+                <table>
+                    <tr>
+                        <td>
+                            <b>Name : </b>
+                        </td>
+                        <td>
+                            <label id="CDEmpName"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Vehicle Type : </b>
+                        </td>
+                        <td>
+                            <label id="CDVehicleType"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Vehicle Number : </b>
+                        </td>
+                        <td>
+                            <label id="CDVehicleNumber"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Plan : </b>
+                        </td>
+                        <td>
+                            <label id="CDPlan"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="Register" onclick="submitConfirmDetails()">
+                        </td>
+                        <td>
+                            <input type="button" value="Cancel" onclick="cancelRegistration()">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
