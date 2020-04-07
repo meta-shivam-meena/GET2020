@@ -148,6 +148,6 @@ public class ExpressionEvaluator {
 
 	public static void main(String[] args) {
 		ExpressionEvaluator evaluator = new ExpressionEvaluator();
-		System.out.println(evaluator.evaluateExpression("5 == 7 - 2"));
+		System.out.println(evaluator.evaluateExpression("4 * 5 == 2 * 13 - 6"));
 	}
 }
